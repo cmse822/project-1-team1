@@ -9,3 +9,13 @@ typedef struct matrix_s {
 	size_t cols;
 	float **data;
 } matrix_t;
+
+void matrix_alloc(matrix_t *mat);
+
+void matrix_free(matrix_t *mat);
+
+// Fill a matrix with random entries between 0 and 1.
+//void fill_random_matrix(matrix *mat);
+
+// Executes C = A * B.
+//void matrix_multiply(matrix a, matrix b, matrix *c);
