@@ -30,7 +30,8 @@ int main() {
 	printf("\n");
 
 	matrix_t matC;
-	matC.rows = matA.rows;
+	//matC.rows = matA.rows;
+	matC.rows = matA.rows + 1;
 	matC.cols = matB.cols;
 	matrix_alloc(&matC);
 	fill_constant_matrix(&matC, 0.0);

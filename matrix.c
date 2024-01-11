@@ -27,10 +27,24 @@ void fill_constant_matrix(matrix_t *mat, float value) {
 
 bool matrix_multiply(matrix_t a, matrix_t b, matrix_t *c) {
 
+	bool found_error = false;
+
 	if (a.cols != b.rows) {
 		perror("A and B have incompatible dimensions.");
-		return false;
+		found_error = true;
 	}
+
+	if (a.rows != c->rows) {
+		perror("blah blah.");
+		found_error = true;
+	}
+
+	if (b.cols != c->cols) {
+		perror("blah.");
+		found_error = true;
+	}
+
+	if (found_error) return false;
 
 	for (int i = 0; i < a.rows; i++) {
 		for (int j = 0; j < b.cols; j++) {
@@ -39,7 +53,5 @@ bool matrix_multiply(matrix_t a, matrix_t b, matrix_t *c) {
 			}
 		}
 	}
-
-	
 	return true;
 }
