@@ -14,8 +14,12 @@ void matrix_alloc(matrix_t *mat);
 
 void matrix_free(matrix_t *mat);
 
+// Fill a matrix with constant value.
+// i.e. A[i][j] = c for all i, j.
+void fill_constant_matrix(matrix_t *mat, float value);
+
 // Fill a matrix with random entries between 0 and 1.
 //void fill_random_matrix(matrix *mat);
 
 // Executes C = A * B.
-//void matrix_multiply(matrix a, matrix b, matrix *c);
+void matrix_multiply(matrix_t a, matrix_t b, matrix_t *c);
