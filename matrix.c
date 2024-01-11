@@ -11,5 +11,4 @@ void matrix_free(matrix_t *mat) {
 	for (int i = 0; i < mat->rows; i++) {
 		free(mat->data[i]);
 	}
-	//free(mat->data);
 }
