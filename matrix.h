@@ -22,4 +22,4 @@ void fill_constant_matrix(matrix_t *mat, float value);
 //void fill_random_matrix(matrix *mat);
 
 // Executes C = C + A * B.
-void matrix_multiply(matrix_t a, matrix_t b, matrix_t *c);
+bool matrix_multiply(matrix_t a, matrix_t b, matrix_t *c);

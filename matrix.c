@@ -1,4 +1,6 @@
+#include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include "matrix.h"
 
 void matrix_alloc(matrix_t *mat) {
@@ -23,7 +25,13 @@ void fill_constant_matrix(matrix_t *mat, float value) {
 	}
 }
 
-void matrix_multiply(matrix_t a, matrix_t b, matrix_t *c) {
+bool matrix_multiply(matrix_t a, matrix_t b, matrix_t *c) {
+
+	if (a.cols != b.rows) {
+		perror("A and B have incompatible dimensions.");
+		return false;
+	}
+
 	for (int i = 0; i < a.rows; i++) {
 		for (int j = 0; j < b.cols; j++) {
 			for (int k = 0; k < a.cols; k++) {
@@ -31,4 +39,7 @@ void matrix_multiply(matrix_t a, matrix_t b, matrix_t *c) {
 			}
 		}
 	}
+
+	
+	return true;
 }
