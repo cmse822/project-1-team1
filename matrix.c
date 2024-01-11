@@ -35,12 +35,12 @@ bool matrix_multiply(matrix_t a, matrix_t b, matrix_t *c) {
 	}
 
 	if (a.rows != c->rows) {
-		perror("blah blah.");
+		perror("A and C have incompatible dimensions.");
 		found_error = true;
 	}
 
 	if (b.cols != c->cols) {
-		perror("blah.");
+		perror("B and C have incompatible dimensions.");
 		found_error = true;
 	}
 
