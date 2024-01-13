@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "matrix.h"
 #include "block_matrix.h"
+#include "get_walltime.h"
 
 void print_matrix(block_matrix_t mat) {
 	for (int i = 0; i < mat.rows; i++) {
@@ -13,6 +14,11 @@ void print_matrix(block_matrix_t mat) {
 }
 
 int main() {
+
+	const int repeat = 10;
+
+	double start_time, end_time;
+	
 	block_matrix_t matA;
 	matA.rows = 3;
 	matA.cols = 2;
@@ -33,13 +39,28 @@ int main() {
 
 	print_matrix(matC);
 
-	block_matrix_multiply(matA, matB, &matC);
+	get_walltime(&start_time);
+
+	for (int i = 0; i < repeat; i++) {
+		block_matrix_multiply(matA, matB, &matC);
+	}
+
+	get_walltime(&end_time);
 
 	print_matrix(matC);
 
 	block_matrix_free(&matA);
 	block_matrix_free(&matB);
 	block_matrix_free(&matC);
+
+	double total_time = (end_time - start_time) / repeat;
+	double Mflop = (matA.rows * matB.cols * matA.cols +
+                        matA.rows * matB.cols * (matA.cols - 1)) / 1000000.0;
+	double performance = Mflop / total_time;
+
+	printf("running time: %f s\n", total_time);
+	printf("FLOPS: %f MFLOPS\n", Mflop);
+	printf("performance: %f Mflop/s\n", performance);
 
 	return 0;
 }
