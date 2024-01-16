@@ -4,6 +4,8 @@
  * We will store the array such that A[i][j] is the element
  * at row i and column j.
  */
+#include <stdbool.h>
+
 typedef struct matrix_s {
 	size_t rows;
 	size_t cols;
