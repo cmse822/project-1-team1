@@ -13,21 +13,34 @@ void print_matrix(block_matrix_t mat) {
 	}
 }
 
-int main(void) {
+// argc refers to the number of arguments passed to the program
+// argv is an array of character pointers listing all the arguments
+int main(int argc, char **argv) {
 
     const int repeat = 20; // Repeat the calculation to obtain the average flops/s
-    const int N_max = 9; // Matrix size, required to be 1 to 10 million
-    
+    const int N_max = atoi(argv[1]); // Second element of our input string, refers to matrix size, required to be 1 to 10 million
+                                     // atoi converts string to integer
+
+    if (argc != 3) {
+        perror("Wrong number of arguments! Please reenter.\n");
+        return -1;
+    }
+
+    if (N_max < 1) {
+        perror("Matrix size too small!\n");
+        return -1;
+    }
+
     double start_time, end_time;
     double total_time[N_max];
-    double Gflop[N_max];
-    double performance[N_max];
+    double Gflop[N_max]; // Total number of floating point operations
+    double performance[N_max]; // Performance time
     
     // Output N and performance arrays for plotting
-    FILE *data;
+    FILE *odata; // Output data
 
-    data = fopen("performance_data.txt", "w"); // The storage path for the output document has not been set yet
-    if (data == NULL) {
+    odata = fopen(argv[2], "w"); // Third element of our input string, refers to output file name
+    if (odata == NULL) {
         perror("Error in opening file");
         return -1;
     }
@@ -38,13 +51,13 @@ int main(void) {
         matA.rows = N;
         matA.cols = N;
         block_matrix_alloc(&matA);
-        fill_constant_block_matrix(&matA, -3.9);
+        fill_constant_block_matrix(&matA, -1.0);
         
         block_matrix_t matB;
         matB.rows = N;
         matB.cols = N;
         block_matrix_alloc(&matB);
-        fill_constant_block_matrix(&matB, 1.4);
+        fill_constant_block_matrix(&matB, 2.0);
         
         block_matrix_t matC;
         matC.rows = N;
@@ -52,7 +65,7 @@ int main(void) {
         block_matrix_alloc(&matC);
         fill_constant_block_matrix(&matC, 0.0);
         
-        // Measure computation time
+        // repeat matrix multiplication and measure the total computation time
         get_walltime(&start_time);
         
         for (int i = 0; i < repeat; i++) {
@@ -60,7 +73,7 @@ int main(void) {
         }
         
         get_walltime(&end_time);
-        
+
         //print_matrix(matC);
         
         block_matrix_free(&matA);
@@ -68,18 +81,15 @@ int main(void) {
         block_matrix_free(&matC);
         
         // Performance calculation, GFLOPS/s
-        total_time[N-1] = (end_time - start_time) / repeat;
+        total_time[N-1] = (end_time - start_time) / repeat; // Average time of each repart
         Gflop[N-1] = (matA.rows * matB.cols * matA.cols +
-                      matA.rows * matB.cols * (matA.cols - 1)) / 1000000000.0;
-        performance[N-1] = Gflop[N-1] / total_time[N-1];
+                      matA.rows * matB.cols * (matA.cols - 1)) / 1000000000.0; // Change unit to GFLOPS
+        performance[N-1] = Gflop[N-1] / total_time[N-1]; // Compute GFLOPS/s
         
-        printf("%f\n", performance[N-1]);
-        fprintf(data, "%d\t%f\n", N, performance[N-1]);
+        fprintf(odata, "%d, %f\n", N, performance[N-1]);
     }
 
-    fclose(data);
-    printf("Data saved to 'performance_data.txt'\n");
+    fclose(odata);
     
     return 0;
 }
-
