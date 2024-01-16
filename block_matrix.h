@@ -6,7 +6,7 @@
  * in memory. It is stored such that all of the values
  * for row 1 come first, then all of the values for row2, etc.
  */
-typedef struct matrix_s {
+typedef struct block_matrix_s {
 	size_t rows;
 	size_t cols;
 	float *data;
