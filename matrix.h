@@ -6,11 +6,13 @@
  */
 #include <stdbool.h>
 
-typedef struct matrix_s {
+struct matrix_s {
 	size_t rows;
 	size_t cols;
 	float **data;
-} matrix_t;
+};
+
+typedef struct matrix_s matrix_t;
 
 void matrix_alloc(matrix_t *mat);
 
