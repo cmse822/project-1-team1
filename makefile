@@ -15,5 +15,3 @@ block_matrix.o: block_matrix.c block_matrix.h
 get_walltime.o: get_walltime.c 
 	gcc -c get_walltime.c -o get_walltime.o
 
-clean: 
-	rm *.o matmul
