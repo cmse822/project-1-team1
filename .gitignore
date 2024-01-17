@@ -2,3 +2,5 @@ matmul
 *.o
 *.txt
 *.csv
+*.slurm
+*.out
