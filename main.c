@@ -40,11 +40,14 @@ int main(int argc, char **argv) {
     FILE *odata; // Output data
 
     odata = fopen(argv[2], "w"); // Third element of our input string, refers to output file name
+                                // Open file in write mode
     if (odata == NULL) {
         perror("Error in opening file");
         return -1;
     }
     
+    fprintf(odata, "%s, %s\n", "matrix size", "GFLOPS/s"); // Print header
+
     for (int N = 1; N <= N_max; N++) {
         
         block_matrix_t matA;
