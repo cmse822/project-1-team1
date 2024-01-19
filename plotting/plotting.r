@@ -8,7 +8,7 @@ library(readr)
 library(scales)
 
 # Data imported from CSV file
-filename <- '/Users/songtraming/Desktop/sample.csv'
+filename <- 'sample.csv'
 
 # Read CSV files
 tryCatch({
