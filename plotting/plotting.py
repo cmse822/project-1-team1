@@ -16,7 +16,7 @@ Cores = 128;
 Clock_speed = 2.445; # unit: GHz
 Flops = 8;
 
-peak_performance = Nodes * Cores * Clock_speed * Flops; # theoretical peak performance
+peak_performance = Nodes * Cores * Clock_speed * Flops; # Gflop/s, theoretical peak performance
 plt.axhline(y=peak_performance, color='red', linestyle='--') 
 
 # plotting
