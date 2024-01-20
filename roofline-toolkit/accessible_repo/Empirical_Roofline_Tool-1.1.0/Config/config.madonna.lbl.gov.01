@@ -1,0 +1,39 @@
+# Apple MacBook Pro, ARM-based CPU (10-core)
+
+ERT_RESULTS Results.MyMacBookPro
+
+ERT_DRIVER  driver1
+ERT_KERNEL  kernel1
+
+ERT_MPI         False
+
+ERT_OPENMP         True
+ERT_OPENMP_CFLAGS  -Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include
+ERT_OPENMP_LDFLAGS -L/opt/homebrew/opt/libomp/lib -lomp
+
+ERT_FLOPS   1,2,4,8,16
+ERT_ALIGN   32
+
+ERT_CC      clang
+ERT_CFLAGS  -O3 -std=c++11 -Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include
+
+ERT_LD      clang
+ERT_LDFLAGS -L/opt/homebrew/opt/libomp/lib -lomp -lc++
+ERT_LDLIBS  
+
+ERT_PRECISION FP64
+
+ERT_RUN     export OMP_NUM_THREADS=ERT_OPENMP_THREADS; ./ERT_CODE
+
+ERT_PROCS_THREADS  1-10
+ERT_OPENMP_THREADS 1,2,4,8,10
+
+ERT_NUM_EXPERIMENTS 3
+
+ERT_MEMORY_MAX 2147483648  # Adjusted to 2GB, consider your system's RAM
+
+ERT_WORKING_SET_MIN 1
+
+ERT_TRIALS_MIN 1
+
+ERT_GNUPLOT gnuplot

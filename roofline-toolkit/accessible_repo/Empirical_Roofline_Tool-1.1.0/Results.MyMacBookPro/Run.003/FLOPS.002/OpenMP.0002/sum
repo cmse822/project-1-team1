@@ -1,0 +1,19 @@
+    37.66 FP64 GFLOPs
+
+  3336.10 Weight
+
+   301.24 L1
+   212.91 L2
+   115.19 DRAM
+
+META_DATA
+  FLOPS          2
+  OPENMP_THREADS 2
+  ERT_VERSION  1.1.0
+  HOSTNAME  Rezas-MacBook-Pro.local
+  UNAME  uname_result(system='Darwin', node='Rezas-MacBook-Pro.local', release='21.6.0', version='Darwin Kernel Version 21.6.0: Wed Aug 10 14:28:23 PDT 2022; root:xnu-8020.141.5~2/RELEASE_ARM64_T6000', machine='arm64')
+  TIMESTAMP_DATA  1705697643.963252
+  CONFIG  {'ERT_RESULTS': ['Results.MyMacBookPro'], 'ERT_DRIVER': ['driver1'], 'ERT_KERNEL': ['kernel1'], 'ERT_MPI': ['False'], 'ERT_OPENMP': ['True'], 'ERT_OPENMP_CFLAGS': ['-Xpreprocessor', '-fopenmp', '-I/opt/homebrew/opt/libomp/include'], 'ERT_OPENMP_LDFLAGS': ['-L/opt/homebrew/opt/libomp/lib', '-lomp'], 'ERT_FLOPS': ['1,2,4,8,16'], 'ERT_ALIGN': ['32'], 'ERT_CC': ['clang'], 'ERT_CFLAGS': ['-O3', '-std=c++11', '-Xpreprocessor', '-fopenmp', '-I/opt/homebrew/opt/libomp/include'], 'ERT_LD': ['clang'], 'ERT_LDFLAGS': ['-L/opt/homebrew/opt/libomp/lib', '-lomp', '-lc++'], 'ERT_LDLIBS': [], 'ERT_PRECISION': ['FP64'], 'ERT_RUN': ['export', 'OMP_NUM_THREADS=ERT_OPENMP_THREADS;', './ERT_CODE'], 'ERT_PROCS_THREADS': ['1-10'], 'ERT_OPENMP_THREADS': ['1,2,4,8,10'], 'ERT_NUM_EXPERIMENTS': ['3'], 'ERT_MEMORY_MAX': ['2147483648', '#', 'Adjusted', 'to', '2GB,', 'consider', 'your', "system's", 'RAM'], 'ERT_WORKING_SET_MIN': ['1'], 'ERT_TRIALS_MIN': ['1'], 'ERT_GNUPLOT': ['gnuplot'], 'ERT_GPU': [False], 'ERT_HIP': [False], 'ERT_OCL': [False], 'ERT_SYCL': [False], 'ERT_WSS_MULT': [1.1]}
+  TIMESTAMP_DATA  1705697664.9263349
+  TIMESTAMP_DATA  1705697682.933354
+   
