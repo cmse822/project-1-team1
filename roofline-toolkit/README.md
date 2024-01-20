@@ -1,7 +1,8 @@
 # Empirical Roofline Toolkit (ERT) Analysis Report
 
 ## System Specifications
-- **Device:** MacBook Pro
+- **Device:** MacBook Pro 2021 
+- **Chip:** Apple M1 Pro
 - **CPU:** ARM-based (10-core)
 
 ## Methodology
@@ -24,7 +25,7 @@
 - Indicate transition from memory-bound to compute-bound regions
 
 ## Graphical Overview
-![Empirical Roofline Graph](accessible_repo/Empirical_Roofline_Tool-1.1.0/Results.MyMacBookPro/Run.003/roofline.ps)
+![Empirical Roofline Graph](accessible_repo/Empirical_Roofline_Tool-1.1.0/Results.MyMacBookPro/Run.003/roofline.jpg)
 
 ## Conclusion
 - MacBook Pro shows a peak double-precision floating-point performance of 145.2 GFLOPs/sec.
