@@ -26,9 +26,9 @@ Compute the arithmetic intensities of the following kernels in units of FLOPs/by
 3. Performance in Mflop/s for _N_=100 is ......  
 
 4.  Hardware system's architecture
-    |           | system 1(name)  | system 2(name)|
+    |           | system 1 (Intel18)  | system 2 (Amd20)|
     |---        |---              |---            |
-    |clock speed|                |               |
+    |clock speed|2.40 GHz         |2.595 GHz      |
     |cache size |                 |               |
     |peak performance|            |               |
     |
