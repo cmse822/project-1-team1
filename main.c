@@ -19,15 +19,15 @@ int main(int argc, char **argv) {
 
     const int repeat = 20; // Repeat the calculation to obtain the average flops/s
     const int N_max = atoi(argv[1]); // Second element of our input string, refers to matrix size, required to be 1 to 10 million
-                                     // atoi converts string to integer
+    const int interval = atoi(argv[2]); // atoi converts string to integer
 
-    if (argc != 3) {
+    if (argc != 4) {
         perror("Wrong number of arguments! Please reenter.\n");
         return -1;
     }
 
-    if (N_max < 1) {
-        perror("Matrix size too small!\n");
+    if (N_max < 1 || interval < 1) {
+        perror("Matrix size or interval too small!\n");
         return -1;
     }
 
@@ -39,7 +39,7 @@ int main(int argc, char **argv) {
     // Output N and performance arrays for plotting
     FILE *odata; // Output data
 
-    odata = fopen(argv[2], "w"); // Third element of our input string, refers to output file name
+    odata = fopen(argv[3], "w"); // Third element of our input string, refers to output file name
                                 // Open file in write mode
     if (odata == NULL) {
         perror("Error in opening file");
@@ -48,7 +48,7 @@ int main(int argc, char **argv) {
     
     fprintf(odata, "%s, %s\n", "matrix size", "GFLOPS/s"); // Print header
 
-    for (int N = 1; N <= N_max; N++) {
+    for (int N = 1; N <= N_max; N += interval) {
         
         block_matrix_t matA;
         matA.rows = N;
