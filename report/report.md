@@ -15,7 +15,7 @@ $N^3+N^2(N-1)=2N^3-N^2$
 Considering a matrix of size `100`, when repeated `20` times, the performance achieved is:
 - **Performance:** 575.928 Mflops/s
 - **Average time:** 0.003455 s
-- **Floating-point operations:** 1.99 million
+- **Floating-point operations:** 1.99 Mflop
 
 ## 4. How does the performance you measured in (3) compare to the theoretical peak performance of your system?
 My laptop is Apple M2 pro chips:
