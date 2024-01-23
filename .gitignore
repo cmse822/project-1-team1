@@ -1,6 +1,6 @@
 matmul
 *.o
 *.txt
-*.csv
+# *.csv
 *.slurm
 *.out
