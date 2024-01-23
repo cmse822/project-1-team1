@@ -40,7 +40,7 @@ int main(int argc, char **argv) {
     // Output N and performance arrays for plotting
     FILE *odata; // Output data
 
-    odata = fopen(argv[3], "w"); // Third element of our input string, refers to output file name
+    odata = fopen(argv[4], "w"); // Third element of our input string, refers to output file name
                                 // Open file in write mode
     if (odata == NULL) {
         perror("Error in opening file");
