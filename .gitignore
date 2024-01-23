@@ -4,3 +4,4 @@ matmul
 *.csv
 *.slurm
 *.out
+*.sb
