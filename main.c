@@ -18,10 +18,11 @@ void print_matrix(block_matrix_t mat) {
 int main(int argc, char **argv) {
 
     const int repeat = 20; // Repeat the calculation to obtain the average flops/s
-    const int N_max = atoi(argv[1]); // Second element of our input string, refers to matrix size, required to be 1 to 10 million
-    const int interval = atoi(argv[2]); // atoi converts string to integer
+    const int N_max = atoi(argv[1]); // Second element of our input string, refers to the largest matrix size, required to be 1 to 10 million
+    const int N_min = atoi(argv[2]); // Third element, refers to the smallest matrix size in computation
+    const int interval = atoi(argv[3]); // atoi converts string to integer
 
-    if (argc != 4) {
+    if (argc != 5) {
         perror("Wrong number of arguments! Please reenter.\n");
         return -1;
     }
@@ -48,7 +49,7 @@ int main(int argc, char **argv) {
     
     fprintf(odata, "%s, %s\n", "matrix size", "GFLOPS/s"); // Print header
 
-    for (int N = 1; N <= N_max; N += interval) {
+    for (int N = N_min; N <= N_max; N += interval) {
         
         block_matrix_t matA;
         matA.rows = N;
