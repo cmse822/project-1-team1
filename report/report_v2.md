@@ -51,10 +51,11 @@ The performance graph, illustrating Gflops/s vs N, is :
 
 - **Computing Node 2: _dev-amd20_**
 - *CPU:* one 2.6 GHz AMD EPYC 7H12 64-Core CPU
-- Under the assumption of one flop per clock cycle, the theoretical peak performance is: $\rm 1\ flop \cdot 2.6\ GHz \cdot 64\ cores = 166.4\ Gflop/s$.
+- Assuming that only one floating-point operation is performed in each clock cycle, and we are using a single core for computation, the theoretical peak performance of each core is: $\rm 1\ flop \cdot 2.6\ GHz \cdot 1\ cores = 2.6\ Gflop/s$.
 
 The performance graph, illustrating Gflops/s vs N, is :   
-(insert plot here)  
+
+![替代文本](/report/amd20.jpg)
 
 
 ### Q6. How does the measured performance for multiple N’s compare to peak? Are there any “features” in the plot? Explain them in the context of the hardware architecture of your system. Include in your write-up a description of your system’s architecture (processor, cache, etc.)
