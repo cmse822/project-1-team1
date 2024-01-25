@@ -75,7 +75,7 @@ We run matrix size from 1 to 3000, and the performance graphs, illustrating perf
 #### Amd20
 ![amd20](/report/amd20.png)
 
-If you add the theoretical peak level for a single core, it would be:
+If we add the theoretical peak level for a single core, it would be:
 ![amd20-1](/report/amd20-1.jpg)
 
 
