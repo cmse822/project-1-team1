@@ -20,6 +20,13 @@
 | 3      | 0.50                            | 7.0 - 13.6                  | 10.1                        |
 | 4      | 1.64                            | 13.6                        | 10.1                        |
 
+| Kernel    | Operational intensity (FLOPs/byte) | L1 | DRAM |
+| --------- | --------------------------------- | --- | --- |
+| SpMV      | 0.25                            | Comp | Mem |
+| LBMHD     | 1.07                            | Comp | Mem |
+| Stencil   | 0.50                            | Comp | Mem | 
+| 3-D FF    | 1.64                            | Comp | Comp |
+
 3. Below are the performances predicted for the kernels in the warmup exercise.
 
 | Kernel | Operational intensity (FLOPs/byte) | AMD performance (GFLOPs/s) | Intel performance (GFLOPs/s) |
