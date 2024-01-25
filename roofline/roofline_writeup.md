@@ -14,6 +14,7 @@
 3. Below are the results predicted for the kernels in the Roofline paper.
 
    **AMD**
+   
 | Kernel    | Operational intensity (FLOPs/byte) | L1 | DRAM |
 | --------- | --------------------------------- | --- | --- |
 | SpMV      | 0.25                            | Comp | Mem |
@@ -21,7 +22,9 @@
 | Stencil   | 0.50                            | Comp | Mem | 
 | 3-D FF    | 1.64                            | Comp | Comp |
 
+
 **Intel**
+
 | Kernel    | Operational intensity (FLOPs/byte) | L1 | L2 | DRAM |
 | --------- | --------------------------------- | --- | --- | --- |
 | SpMV      | 0.25                            | Comp | Mem | Mem |
