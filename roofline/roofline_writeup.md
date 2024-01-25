@@ -13,7 +13,7 @@
 
 3. Below are the results predicted for the kernels in the Roofline paper.
 
-   **AMD**
+**AMD**
    
 | Kernel    | Operational intensity (FLOPs/byte) | L1 | DRAM |
 | --------- | --------------------------------- | --- | --- |
