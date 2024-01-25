@@ -4,10 +4,20 @@
 For AMD, the ridge point is 13.6 GFLOPs/s at an operations intensity of about 1.9 FLOPs/byte.
 For Intel, the ridge point is 10.1 GFLOPs/s at an operations intensity of about 2.2 FLOPs/byte.
 
-2.
+2. Below are the results predicted for the kernels in the Roofline paper.
 | Kernel | Operational intensity (FLOPs/byte) | AMD performance (GFLOPs/s) | Intel performance (GFLOPs/s) |
 | -----  | ---------------------------------- | -------------------------- | ---------------------------- |
-| 1 | 0.25 | 0.7 - 1.0 | |
-| 2 | 1.07 | | |
-| 3 | 0.50 | | |
-| 4 | 1.64 | | |
+| 1 | 0.25 | 0.7 - 2.0 | 5.0 - 10.1 |
+| 2 | 1.07 | 1.5 - 8.0 | 10.1 |
+| 3 | 0.50 | 7.0 - 13.6 | 10.1 |
+| 4 | 1.64 | 13.6 | 10.1 |
+
+3. Below are the performances predicted for the kernels in the warmup exercise.
+| Kernel | Operational intensity (FLOPs/byte) | AMD performance (GFLOPs/s) | Intel performance (GFLOPs/s) |
+| -----  | ---------------------------------- | -------------------------- | ---------------------------- |
+| 1 | 0.25 | 0.7 - 2.0 | 5.0 - 10.1 |
+| 2 | 1.07 | 1.5 - 8.0 | 10.1 |
+| 3 | 0.50 | 7.0 - 13.6 | 10.1 |
+| 4 | 1.64 | 13.6 | 10.1 |
+
+4. Below are the 
