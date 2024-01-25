@@ -73,7 +73,10 @@ We run matrix size from 1 to 3000, and the performance graphs, illustrating perf
 
 
 #### Amd20
-![amd20](/report/amd20.jpg)
+![amd20](/report/amd20.png)
+
+If you add the theoretical peak level for a single core, it would be:
+![amd20-1](/report/amd20-1.png)
 
 
 ### Q6. How does the measured performance for multiple N’s compare to peak? Are there any “features” in the plot? Explain them in the context of the hardware architecture of your system. Include in your write-up a description of your system’s architecture (processor, cache, etc.)
