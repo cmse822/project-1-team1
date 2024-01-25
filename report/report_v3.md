@@ -67,9 +67,9 @@ Since 384 MB is beyond L3 cache, the system will go to use RAM when the matrix s
 We run matrix size from 1 to 3000, and the performance graphs, illustrating performance (Gflops/s) vs matrix size (N), are shown below:   
 #### Intel18
 
-![intel18_origin data](/report/intel18.png)
+![intel18_origin data](/report/intel18_3000.png)
 
-![intel18_log scale data](/report/intel18_log.png)
+![intel18_log scale data](/report/intel18_3000_log.png)
 
 
 #### Amd20
