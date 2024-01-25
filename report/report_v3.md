@@ -82,13 +82,20 @@ If we add the theoretical peak level for a single core, it would be:
 ### Q6. How does the measured performance for multiple N’s compare to peak? Are there any “features” in the plot? Explain them in the context of the hardware architecture of your system. Include in your write-up a description of your system’s architecture (processor, cache, etc.)
 (hint: Pay particular attention to the comparison between different architectures and give explanations for them.)  
 
-|           |**intel18**      |**amd20**|
-|---        |---              |---            |
-|clock speed|2.4 GHz          |2.6 GHz        |
-|cache size |                 |               |
-|peak performance|96 Gflop/s  |166.4 Gflop/s  |
-|  
+#### Amd20
+The initial velocity of the graph line will rise rapidly, but then it will decrease in a stepwise manner. The boundaries of these stepwise decreases may correspond to the capacities of the L1, L2, and L3 caches.
 
+We use this formula to calculate the matrix size (N) corresponding to cache capacity (KB): $ \rm Cache\ size = 24 \cdot N^2 / 1024 $
+
+Based on the cache data provided above, we can calculate the matrix size corresponding to each cache:
+| cache      |     N       |
+|---         |---          |
+|L1          |52           |
+|L2          |157          |
+|L3          |851          |
+|L3 (data from AMD)          |3308          |
+
+However, there are some discrepancies with the calculated results. While the boundaries of L1 and L2 can be explained by hardware or algorithm strategies, the drop boundary of L3 seems to be much larger than the predicted N value. I don't know the reason for this at the moment, but I noticed that the L3 cache data on the official AMD EPYC 7H12 CPU website (https://www.amd.com/en/products/cpu/amd-epyc-7h12) is slightly larger than the data output by lscpu. The official data is 256MB, which might align more closely with the calculated data.
 
 
 
