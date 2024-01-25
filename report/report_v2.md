@@ -55,7 +55,7 @@ The performance graph, illustrating Gflops/s vs N, is :
 
 The performance graph, illustrating Gflops/s vs N, is :   
 
-![替代文本](/report/amd20.jpg)
+![替代文本](/report/amd20.png)
 
 
 ### Q6. How does the measured performance for multiple N’s compare to peak? Are there any “features” in the plot? Explain them in the context of the hardware architecture of your system. Include in your write-up a description of your system’s architecture (processor, cache, etc.)
