@@ -2,8 +2,13 @@
 
 1. ![AMD Roofline](./roofline_amd.jpg)
    ![Intel Roofline](./roofline_intel.jpg) 
-   For AMD, the ridge point is 13.6 GFLOPs/s at an operational intensity of about 0.19 FLOPs/byte for L1, and 1.2 for DRAM. \\
-   For Intel, the ridge point is 10.1 GFLOPs/s at an operational intensity of about 0.22 FLOPs/byte for L1, 0.31 for L2, and 0.5 for DRAM.
+   - For AMD:
+     - Ridge point is 13.6 GFLOPs/s at an operational intensity of about 0.19 FLOPs/byte for L1.
+     - Ridge point is 13.6 GFLOPs/s at an operational intensity of about 1.2 FLOPs/byte for DRAM.
+   - For Intel:
+     - Ridge point is 10.1 GFLOPs/s at an operational intensity of about 0.22 FLOPs/byte for L1.
+     - Ridge point is 10.1 GFLOPs/s at an operational intensity of about 0.31 FLOPs/byte for L2.
+     - Ridge point is 10.1 GFLOPs/s at an operational intensity of about 0.5 FLOPs/byte for DRAM.
 
 2. Below are the results predicted for the kernels in the Roofline paper.
 
@@ -22,6 +27,5 @@
 | 2      | 1.07                            | 1.5 - 8.0                   | 10.1                        |
 | 3      | 0.50                            | 7.0 - 13.6                  | 10.1                        |
 | 4      | 1.64                            | 13.6                        | 10.1                        |
-
 
 4. Below are the 
