@@ -35,9 +35,9 @@ The laptop is Apple M2 pro chips:
 - *Clock speed:* 3.4 GHz
 - *Cache:* 192 KB instruction cache, 128 KB data cache
 
-Assuming one flop per clock cycle, the peak performance is: $12 \cdot 3.4 \cdot 1 = 40.8$ Gflop/s.
+Assuming one flop per clock cycle, the peak performance is: $12 \cdot 3.4 \cdot 1 = 40.8$ Gflop/s (3.4 Gflop/s per core).
 
-The performance in (3) is _0.575 Gflop/s_ , which is significantly lower than the peak performance calculated above _40.8 Gflop/s_.
+The performance in (3) is _0.575 Gflop/s_ , which is significantly lower than the peak performance calculated above.
 
 ### Q5. Make a plot of the resulting measured Gflop/s vs. N.
 #### Node 1: _Intel18_
