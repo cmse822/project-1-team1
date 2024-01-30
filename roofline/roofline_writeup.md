@@ -48,12 +48,23 @@ is perferable to DRAM in this case.
 ### Q5 
 Below are the performances predicted for the kernels in the warmup exercise.
 
-| Kernel | Operational intensity (FLOPs/byte) | AMD performance (GFLOPs/s) | Intel performance (GFLOPs/s) |
-| ------ | --------------------------------- | --------------------------- | --------------------------- |
-| 1      | 0.25                            | 0.7 - 2.0                   | 5.0 - 10.1                  |
-| 2      | 1.07                            | 1.5 - 8.0                   | 10.1                        |
-| 3      | 0.50                            | 7.0 - 13.6                  | 10.1                        |
-| 4      | 1.64                            | 13.6                        | 10.1                        |
+ **AMD**
+
+|     | Operational intensity (FLOPs/byte) | L1 | L1 performance (GFLOP/s) | DRAM | DRAM performance (GFLOP/s) |
+| --------- | --------------------------------- | --- | ------------------------ | ---- | -------------------------- |
+| Y[j] += Y[j] + A[j][i] * B[i]      | 0.094                            | Mem | 7 |  Mem | 1.1 |
+| s += A[i] * A[i]                   | 0.250                            | Comp | 13.6 | Mem | 3 |
+| s += A[i] * B[i]                   | 0.125                            | Mem | 8 | Mem | 1.5 | 
+| Y[i] = A[i] + C*B[i]               | 0.167                            | Mem | 10 | Mem | 1.8 |
+
+**Intel**
+
+|     | Operational intensity (FLOPs/byte) | L1 | L1 performance (GFLOP/s) | L2 | L2 performance (GFLOP/s) | DRAM | DRAM performance (GFLOP/s) |
+| --------- | --------------------------------- | --- | --- | --- | --- | --- | --- |
+| Y[j] += Y[j] + A[j][i] * B[i]      | 0.094                            | Mem |  4  | Mem |  3  | Mem |  1.8  |
+| s += A[i] * A[i]                   | 0.250                            | Comp |  10.1  |  Mem |  8  |  Mem |  5   | 
+| s += A[i] * B[i]                   | 0.125                            | Mem |  5  |  Mem |  4  |  Mem |  2.5   | 
+| Y[i] = A[i] + C*B[i]               | 0.167                            | Mem |  7  |  Mem |  5  |  Mem |  3   | 
 
 ### Q6
 Our matrix multiplication results give a maximum performance of about 0.5 GFLOPs. Given that this kernel has an operational intensity
