@@ -45,17 +45,6 @@ For the `SpMV` kernel, performance is compute bound for the L1 cache, and memory
 be optimized so that all of the matrix elements that are needed for the next steps of the computation are stored in L1 cache. Storing elements in L2 cache
 is perferable to DRAM in this case. 
 
-3. Below are the performances predicted for the kernels in the warmup exercise.
-
-| Kernel | Operational intensity (FLOPs/byte) | AMD performance (GFLOPs/s) | Intel performance (GFLOPs/s) |
-| ------ | --------------------------------- | --------------------------- | --------------------------- |
-| 1      | 0.25                            | 0.7 - 2.0                   | 5.0 - 10.1                  |
-| 2      | 1.07                            | 1.5 - 8.0                   | 10.1                        |
-| 3      | 0.50                            | 7.0 - 13.6                  | 10.1                        |
-| 4      | 1.64                            | 13.6                        | 10.1                        |
-
-4. Our matrix multiplication results give a maximum performance of about 0.5 GFLOPs. Given that this kernel has an operational intensity
-
 ### Q5 
 
 Below are the performances predicted for the kernels in the warmup exercise.
