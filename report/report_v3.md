@@ -6,7 +6,7 @@
 
 
 
-# Warm-up
+## Warm-up
 
 | | Operations (FLOPs) | Memory access (byte) | Algorithmic intensity (FLOPs/byte) |
 | --- | --- | --- | --- |
@@ -16,7 +16,7 @@
 |     Y[i] = A[i] + C*B[i]        | 2 | 24 | 0.167 |   
 
 
-# Part 1: Matrix-matrix Multiplication
+## Part 1 :  Matrix-matrix Multiplication
 
 ### Q2. For a given matrix size N, what is the total number of floating point operations performed by this operator?  
 
@@ -40,98 +40,69 @@ Assuming one flop per clock cycle, the peak performance is: $12 \cdot 3.4 \cdot 
 The performance in (3) is _0.575 Gflop/s_ , which is significantly lower than the peak performance calculated above _40.8 Gflop/s_.
 
 ### Q5. Make a plot of the resulting measured Gflop/s vs. N.
-#### Computing Node 1: _dev-intel18_
+#### Node 1: _Intel18_
 - *CPU:* two 2.4 GHz 20-core Intel Xeon Gold 6148 CPUs (40 cores)
-- Under the assumption of one flop per clock cycle, the theoretical peak performance is calculated as: $\rm 1\ flop \cdot 2.4\ GHz \cdot 1\ cores = 2.4\ Gflop/s$.    
+- Under the assumption of one flop per clock cycle, the theoretical peak performance is calculated as: $\rm 1\ flop \cdot 2.4\ GHz \cdot 1\ core = 2.4\ Gflop/s$.    
 - L1d cache: 32    KB  
 - L1i cache: 32    KB  
 - L2  cache: 1024  KB
 - L3  cache: 28160 KB
 
-<img src="/report/intel18_3000.png" alt="Alt Text" width="900"/>
+<img src="intel18_3000.png" alt="Alt Text" width="900"/>
 
-<img src="/report/intel18_3000_log.png" alt="Alt Text" width="900"/>
+<img src="intel18_3000_log.png" alt="Alt Text" width="900"/>
 
-#### Computing Node 2: _dev-amd20_
+#### Node 2: _Amd20_
 - *CPU:* one 2.6 GHz AMD EPYC 7H12 64-Core CPU
-- Under the assumption of one flop per clock cycle, the theoretical peak performance is: $\rm 1\ flop \cdot 2.6\ GHz \cdot 1\ cores = 2.6\ Gflop/s$.  
+- Under the assumption of one flop per clock cycle, the theoretical peak performance is: $\rm 1\ flop \cdot 2.6\ GHz \cdot 1\ core = 2.6\ Gflop/s$.  
 - L1d cache: 32    KB  
 - L1i cache: 32    KB  
 - L2  cache: 512   KB
 - L3  cache: 16384 KB  
 
-**NOTE**: For matrix size N, when we do matrix multiplication A=B*C, the memory space needed will be  
- (for easier approximation, use 10^3 instead of 1024 here)    
-N = 1000, 1000^2 floating number * 8 byte * 3 matrices / 10^6 = 24  MB;  
-N = 3000, 3000^2 floating number * 8 byte * 3 matrices / 10^6 = 216 MB;   
-N = 4000, 4000^2 floating number * 8 byte * 3 matrices / 10^6 = 384 MB.  
+**NOTE**: For matrix size N, when we do matrix multiplication A=B*C, the memory space needed will be      
+N = 1000, 1000^2 floating number * 8 byte * 3 matrices / 1024^2 $\approx$
+ 24  MB;  
+N = 3000, 3000^2 floating number * 8 byte * 3 matrices / 1024^2 $\approx$ 216 MB;   
+N = 4000, 4000^2 floating number * 8 byte * 3 matrices / 1024^2 $\approx$ 384 MB.  
 
 We run matrix size from 1 to 3000, and the performance graphs, illustrating performance (Gflops/s) vs matrix size (N), are shown below:   
 
-![amd20](/report/amd20.png)
-
-If we add the theoretical peak level for a single core, it would be:
-![amd20-1](/report/amd20-1.jpg)
+<img src="amd20.png" alt="Alt Text" width="900"/>   
 
 
-### Q6. How does the measured performance for multiple N’s compare to peak? Are there any “features” in the plot? Explain them in the context of the hardware architecture of your system. Include in your write-up a description of your system’s architecture (processor, cache, etc.)
-(hint: Pay particular attention to the comparison between different architectures and give explanations for them.)  
+If we add the theoretical peak level for a single core, it would be:  
+<img src="amd20-1.jpg" alt="Alt Text" width="900"/>
 
-#### Amd20
-The initial velocity of the graph line will rise rapidly, but then it will decrease in a stepwise manner. The boundaries of these stepwise decreases may correspond to the capacities of the L1, L2, and L3 caches.
+### Q6. How does the measured performance for multiple N’s compare to peak? Are there any “features” in the plot? Explain them in the context of the hardware architecture of your system. Include in your write-up a description of your system’s architecture (processor, cache, etc.)   
 
-We use this formula to calculate the matrix size (N) corresponding to cache capacity (KB): $\rm Cache \ size = \rm 24 \cdot \rm N^2 / \rm 1024$
+On both architectures (Intel18 & Amd20), the performance(Gflop/s) graph line rises rapidly as the matrix size gets bigger at the beginning (matrix size within 100 or so), after matrix size reaches 100, the trend of performance graph line becomes flatten, and then it goes down in a stepwise manner as the matrix size keeps enlarged.  
 
-Based on the cache data provided above, we can calculate the matrix size corresponding to each cache:
-| cache      |     N       |
-|---         |---          |
-|L1          |52           |
-|L2          |157          |
-|L3          |851          |
-|L3 (data from AMD)          |3308          |
+The positions where those stepwise decreases taking place may correspond to the memory space needed reaches L1, L2, L3 cache capacity repectively.
 
-However, there are some discrepancies with the calculated results. While the boundaries of L1 and L2 can be explained by hardware or algorithm strategies, the drop boundary of L3 seems to be much larger than the predicted N value. I don't know the reason for this at the moment, but I noticed that the L3 cache data on the official AMD EPYC 7H12 CPU website (https://www.amd.com/en/products/cpu/amd-epyc-7h12) is slightly larger than the data output by lscpu. The official data is 256MB, which might align more closely with the calculated data.
+Based on the cache data presented in Q5, we calculate the matrix size corresponding to each cache level. We do calculation by using the  formula,  $\rm Cache \ size(KB) = N^2 \cdot 3 \cdot 8 / 1024$ .  
+
+
+|*Intel18*| cache      |matrix size, N       |
+|---|---         |---          |
+| |L1 (64KB)          |52            |
+| |L2 (1024KB)        |215          |
+| |L3 (28160KB)       |1118         |
+|
+
+
+
+|*Amd20*| cache      |matrix size, N      |
+|---|---         |---          |
+| |L1 (64KB)          |52           |
+| |L2 (512KB)         |157          |
+| |L3 (16384KB)         |851          |
+| |*L3 (256MB, data from AMD website)|3308          |
+|
+
+However, on Amd20, there are some discrepancies with the calculated results. While the boundaries of L1 and L2 can be explained by hardware or algorithm strategies, the drop boundary of L3 seems to be much larger than the predicted N value. I don't know the reason for this at the moment, but I noticed that the L3 cache data on the official AMD EPYC 7H12 CPU website (https://www.amd.com/en/products/cpu/amd-epyc-7h12) is slightly larger than the data output by `lscpu`. The official data is 256MB, which might align more closely with the calculated data.
 
 
 
 ---
-# Part 2: The Roofline Model 
-
-### Q3. Run Empirical Roofline Tool(ERT) in serial mode.
-    |             | peak performance | bandwidths|
-    |---          |---               |---            |
-    |cache level 1|                  |               |
-    |cache level 2|                  |               |
-    |cache level 3|                  |               |
-    |DRAM         |                  |               |
-    |
-
-    The 'ridge point' of the roofline for case ...... lies at ......  
-
-
-### Q4. (Descriptions of the four floating point (FP) kernels can be found in Table2 in the paper.)  
-On the platforms we are testing, the performance of the four FP kermel will be...   
-(need plots)
-
-    |kernel |performance   |decription   | 
-    |---    |---           |---  |
-    |SpMV   |              |Sparse Matrix-Vector multiply: y = A*x where A is a sparse matrix and x, y are dense vectors; multiplies and adds equal.|
-    |LBMHD  |              |Lattice-Boltzmann Magnetohydro- dynamics is a structured grid code with a series of time steps.|
-    |Stencil|              |A multigrid kernel that updates 7 nearby points in a 3-D stencil for a 2563 problem.|
-    |3-D FFT|              |Three-Dimensional Fast Fourier Transform (2 sizes: 1283 and 5123). |
-
-
-### Q5. On the platforms we are testing, the performance of the four kermels given in the Warm-up will be...    
-(need plots)
-
-
-    |kernel                        |performance| 
-    |---                            |---  |
-    |`Y[j] += Y[j] + A[j][i] * B[i]`|     |
-    |`s += A[i] * A[i]`             |     |
-    |`s += A[i] * B[i]`             |     |
-    |`Y[i] = A[i] + C*B[i]`         |     |
-    |
-
-### Q6. Compare results for the roofline model to what we obtained for the matrix-matrix multiplication operation from Part 1.  
-The relationship between the rooflines of memory badwidth and the features in the algorithmic performance as a function of matrix size is ......
+## Part 2: The Roofline Model 
