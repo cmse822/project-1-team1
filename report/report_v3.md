@@ -80,7 +80,7 @@ If we add the theoretical peak level for a single core, it would be:
 #### Amd20
 The initial velocity of the graph line will rise rapidly, but then it will decrease in a stepwise manner. The boundaries of these stepwise decreases may correspond to the capacities of the L1, L2, and L3 caches.
 
-We use this formula to calculate the matrix size (N) corresponding to cache capacity (KB): $ \rm Cache\ size = 24 \cdot N^2 / 1024 $
+We use this formula to calculate the matrix size (N) corresponding to cache capacity (KB): $\rm Cache \ size = \rm 24 \cdot \rm N^2 / \rm 1024$
 
 Based on the cache data provided above, we can calculate the matrix size corresponding to each cache:
 | cache      |     N       |
