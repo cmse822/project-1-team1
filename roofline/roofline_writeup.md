@@ -26,11 +26,6 @@ Below are the results predicted for the kernels in the Roofline paper.
 | Stencil   | 0.50                            | Comp | 13.60 | Mem | 6.00 | 
 | 3-D FF    | 1.64                            | Comp | 13.60 | Comp | 13.60 |
 
-For the `SpMV` kernel, performance is compute bound for the L1 cache, and memory bound for the DRAM cache. Storage of the amtrix should
-be optimized so that all of the matrix elements that are needed for the next steps of the computation are stored in L1 cache. Additionally,
-SIMD instructions can be used to great advantage due to the structure of matrix-vector multiplication. For `LBMHD`, the paper remarks that 
-the no-allocate store optimization yields maximal operations intensity. This is the same operational intensity as is need to reach the ridge point
-for both L1 cache and DRAM on the AMD 20.   
 
 - **Intel18**
 
@@ -41,9 +36,13 @@ for both L1 cache and DRAM on the AMD 20.
 | Stencil   | 0.50                            | Comp | 10.10    |  Comp | 10.10    |  Comp | 10.10    | 
 | 3-D FF    | 1.64                            | Comp | 10.10    |  Comp | 10.10    |  Comp | 10.10    | 
 
-For the `SpMV` kernel, performance is compute bound for the L1 cache, and memory bound for the L2 cache and DRAM. Storage of the amtrix should
-be optimized so that all of the matrix elements that are needed for the next steps of the computation are stored in L1 cache. Storing elements in L2 cache
-is perferable to DRAM in this case. 
+For the `SpMV` kernel, performance is compute bound for the L1 cache, and memory bound for the DRAM cache. Storage of the amtrix should
+be optimized so that all of the matrix elements that are needed for the next steps of the computation are stored in L1 cache. Additionally,
+SIMD instructions can be used to great advantage due to the structure of matrix-vector multiplication. For `LBMHD`, the paper remarks that 
+the no-allocate store optimization yields maximal operations intensity. This is the same operational intensity as is need to reach the ridge point
+for both L1 cache and DRAM on the AMD 20. For the `Stencil` kernel, a large improvement might be made by using SIMD instructions (such as on a GPU)
+due to the regularity of stencils. This would negate the need to do an many iterations. The Fast Fourier transform is compute bound even for DRAM
+access, so optimization is not necessary. 
 
 ### Q5 
 
@@ -74,4 +73,5 @@ In the case of Intel architecture, the table reflects a similar trend of kernels
 ### Q6
 Our matrix multiplication results give a maximum performance of about 0.5 GFLOPs. Given that this kernel has an operational intensity
 of 0.75, our predicted maximum performance is 10.1 GFLOPs/s on Intel 18 and 7.5 to 13.6 GFLOPs, depending on wether we are reading from DRAM
-or the L1 cache. 
+or the L1 cache. Our performance shows characteristic "drops" where rows of a matrix can no longer fit into a certain cache level. For more details,
+see part 1 of our writeup above. 
