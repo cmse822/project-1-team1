@@ -66,6 +66,8 @@ N = 1000, 1000^2 floating number * 8 byte * 3 matrices / 10^6 = 24  MB;
 N = 3000, 3000^2 floating number * 8 byte * 3 matrices / 10^6 = 216 MB;   
 N = 4000, 4000^2 floating number * 8 byte * 3 matrices / 10^6 = 384 MB.  
 
+We are using a single core for computation, the theoretical peak performance of each core is: $\rm 1\ flop \cdot 2.6\ GHz \cdot 1\ cores = 2.6\ Gflop/s$.
+
 We run matrix size from 1 to 3000, and the performance graphs, illustrating performance (Gflops/s) vs matrix size (N), are shown below:   
 
 ![amd20](/report/amd20.png)
