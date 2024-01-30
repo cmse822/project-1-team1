@@ -57,6 +57,8 @@ Below are the performances predicted for the kernels in the warmup exercise.
 | s += A[i] * B[i]                   | 0.125                            | Mem | 8 | Mem | 1.5 | 
 | Y[i] = A[i] + C*B[i]               | 0.167                            | Mem | 10 | Mem | 1.8 |
 
+For the AMD architecture, kernels like `Y[j] += Y[j] + A[j][i] * B[i]`, with lower operational intensity, are primarily memory-bound, indicating a performance bottleneck due to memory access. Conversely, kernels with higher operational intensity, like `s += A[i] * A[i]`, are compute-bound at the L1 level, showing their efficient utilization of the processor's computational capacity. These results suggest that memory access optimization is crucial for kernels with low operational intensity, while maximizing computational efficiency is key for those with high intensity.
+
 **Intel**
 
 |     | Operational intensity (FLOPs/byte) | L1 | L1 performance (GFLOP/s) | L2 | L2 performance (GFLOP/s) | DRAM | DRAM performance (GFLOP/s) |
@@ -65,6 +67,8 @@ Below are the performances predicted for the kernels in the warmup exercise.
 | s += A[i] * A[i]                   | 0.250                            | Comp |  10.1  |  Mem |  8  |  Mem |  5   | 
 | s += A[i] * B[i]                   | 0.125                            | Mem |  5  |  Mem |  4  |  Mem |  2.5   | 
 | Y[i] = A[i] + C*B[i]               | 0.167                            | Mem |  7  |  Mem |  5  |  Mem |  3   | 
+
+In the case of Intel architecture, the table reflects a similar trend of kernels being compute-bound or memory-bound based on their operational intensity. For example, the `SpMV` kernel, despite being compute-bound at the L1 level, becomes memory-bound at L2 and DRAM levels, indicating a potential memory bottleneck. This implies that for Intel, performance optimization strategies need to focus not only on computational efficiency but also on effective memory utilization, especially for L2 and DRAM. The kernels with higher operational intensity, like `3-D FF`, maintain compute-bound status across all cache levels, demonstrating their capability to exploit the processor's compute power efficiently.
 
 ### Q6
 Our matrix multiplication results give a maximum performance of about 0.5 GFLOPs. Given that this kernel has an operational intensity
