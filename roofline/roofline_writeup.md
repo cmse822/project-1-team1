@@ -30,12 +30,12 @@ for both L1 cache and DRAM on the AMD 20.
 
 **Intel**
 
-| Kernel    | Operational intensity (FLOPs/byte) | L1 | L2 | DRAM |
-| --------- | --------------------------------- | --- | --- | --- |
-| SpMV      | 0.25                            | Comp | Mem | Mem |
-| LBMHD     | 1.07                            | Comp | Comp | Comp |
-| Stencil   | 0.50                            | Comp | Comp | Comp |
-| 3-D FF    | 1.64                            | Comp | Comp | Comp |
+| Kernel    | Operational intensity (FLOPs/byte) | L1 | L1 performance (GFLOP/s) | L2 | L2 performance (GFLOP/s) | DRAM | DRAM performance (GFLOP/s) |
+| --------- | --------------------------------- | --- | --- | --- | --- | --- | --- |
+| SpMV      | 0.25                            | Comp |     | Mem |     | Mem |     |
+| LBMHD     | 1.07                            | Comp |     |  Comp |     |  Comp |     | 
+| Stencil   | 0.50                            | Comp |     |  Comp |     |  Comp |     | 
+| 3-D FF    | 1.64                            | Comp |     |  Comp |     |  Comp |     | 
 
 For the `SpMV` kernel, performance is compute bound for the L1 cache, and memory bound for the L2 cache and DRAM. Storage of the amtrix should
 be optimized so that all of the matrix elements that are needed for the next steps of the computation are stored in L1 cache. Storing elements in L2 cache
