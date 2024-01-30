@@ -88,7 +88,6 @@ Based on the cache data presented in Q5, we calculate the matrix size correspond
 | |L1 (64KB)          |52            |
 | |L2 (1024KB)        |215          |
 | |L3 (28160KB)       |1118         |
-|
 
 
 
@@ -97,8 +96,7 @@ Based on the cache data presented in Q5, we calculate the matrix size correspond
 | |L1 (64KB)          |52           |
 | |L2 (512KB)         |157          |
 | |L3 (16384KB)         |851          |
-| |*L3 (256MB, data from AMD website)|3308          |
-|
+| |*L3 (256MB, data from official website)|3308          |
 
 However, on Amd20, there are some discrepancies with the calculated results. While the boundaries of L1 and L2 can be explained by hardware or algorithm strategies, the drop boundary of L3 seems to be much larger than the predicted N value. I don't know the reason for this at the moment, but I noticed that the L3 cache data on the official AMD EPYC 7H12 CPU website (https://www.amd.com/en/products/cpu/amd-epyc-7h12) is slightly larger than the data output by `lscpu`. The official data is 256MB, which might align more closely with the calculated data.
 
