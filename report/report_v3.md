@@ -42,7 +42,7 @@ The performance in (3) is _0.575 Gflop/s_ , which is significantly lower than th
 ### Q5. Make a plot of the resulting measured Gflop/s vs. N.
 #### Computing Node 1: _dev-intel18_
 - *CPU:* two 2.4 GHz 20-core Intel Xeon Gold 6148 CPUs (40 cores)
-- Under the assumption of one flop per clock cycle, the theoretical peak performance is calculated as: $\rm 1\ flop \cdot 2.4\ GHz \cdot 40\ cores = 96\ Gflop/s$.    
+- Under the assumption of one flop per clock cycle, the theoretical peak performance is calculated as: $\rm 1\ flop \cdot 2.4\ GHz \cdot 1\ cores = 2.4\ Gflop/s$.    
 - L1d cache: 32    KB  
 - L1i cache: 32    KB  
 - L2  cache: 1024  KB
@@ -54,7 +54,7 @@ The performance in (3) is _0.575 Gflop/s_ , which is significantly lower than th
 
 #### Computing Node 2: _dev-amd20_
 - *CPU:* one 2.6 GHz AMD EPYC 7H12 64-Core CPU
-- Under the assumption of one flop per clock cycle, the theoretical peak performance is: $\rm 1\ flop \cdot 2.6\ GHz \cdot 64\ cores = 166.4\ Gflop/s$.  
+- Under the assumption of one flop per clock cycle, the theoretical peak performance is: $\rm 1\ flop \cdot 2.6\ GHz \cdot 1\ cores = 2.6\ Gflop/s$.  
 - L1d cache: 32    KB  
 - L1i cache: 32    KB  
 - L2  cache: 512   KB
@@ -65,8 +65,6 @@ The performance in (3) is _0.575 Gflop/s_ , which is significantly lower than th
 N = 1000, 1000^2 floating number * 8 byte * 3 matrices / 10^6 = 24  MB;  
 N = 3000, 3000^2 floating number * 8 byte * 3 matrices / 10^6 = 216 MB;   
 N = 4000, 4000^2 floating number * 8 byte * 3 matrices / 10^6 = 384 MB.  
-
-We are using a single core for computation, the theoretical peak performance of each core is: $\rm 1\ flop \cdot 2.6\ GHz \cdot 1\ cores = 2.6\ Gflop/s$.
 
 We run matrix size from 1 to 3000, and the performance graphs, illustrating performance (Gflops/s) vs matrix size (N), are shown below:   
 
