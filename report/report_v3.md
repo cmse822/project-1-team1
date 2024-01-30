@@ -14,7 +14,6 @@
 |     s += A[i] * A[i]            | 2 | 8  | 0.250 | 
 |     s += A[i] * B[i]            | 2 | 16 | 0.125 | 
 |     Y[i] = A[i] + C*B[i]        | 2 | 24 | 0.167 |   
-|
 
 
 # Part 1: Matrix-matrix Multiplication
@@ -47,7 +46,11 @@ The performance in (3) is _0.575 Gflop/s_ , which is significantly lower than th
 - L1d cache: 32    KB  
 - L1i cache: 32    KB  
 - L2  cache: 1024  KB
-- L3  cache: 28160 KB  
+- L3  cache: 28160 KB
+
+<img src="/report/intel18_3000.png" alt="Alt Text" width="900"/>
+
+<img src="/report/intel18_3000_log.png" alt="Alt Text" width="900"/>
 
 #### Computing Node 2: _dev-amd20_
 - *CPU:* one 2.6 GHz AMD EPYC 7H12 64-Core CPU
@@ -63,16 +66,8 @@ N = 1000, 1000^2 floating number * 8 byte * 3 matrices / 10^6 = 24  MB;
 N = 3000, 3000^2 floating number * 8 byte * 3 matrices / 10^6 = 216 MB;   
 N = 4000, 4000^2 floating number * 8 byte * 3 matrices / 10^6 = 384 MB.  
 
-Since 384 MB is beyond L3 cache, the system will go to use RAM when the matrix size reaches 2000~3000, which makes the performance become low and takes quite a long time to finish the computing.     
 We run matrix size from 1 to 3000, and the performance graphs, illustrating performance (Gflops/s) vs matrix size (N), are shown below:   
-#### Intel18
 
-<img src="/report/intel18_3000.png" alt="Alt Text" width="900"/>
-
-<img src="/report/intel18_3000_log.png" alt="Alt Text" width="900"/>
-
-
-#### Amd20
 ![amd20](/report/amd20.png)
 
 If we add the theoretical peak level for a single core, it would be:
