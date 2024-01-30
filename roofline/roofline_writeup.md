@@ -56,10 +56,10 @@ is perferable to DRAM in this case.
 
 |     | Operational intensity (FLOPs/byte) | L1 | L1 performance (GFLOP/s) | L2 | L2 performance (GFLOP/s) | DRAM | DRAM performance (GFLOP/s) |
 | --------- | --------------------------------- | --- | --- | --- | --- | --- | --- |
-| Y[j] += Y[j] + A[j][i] * B[i]      | 0.094                            | Comp |  10.1  | Mem |  8  | Mem |  5  |
-| s += A[i] * A[i]                   | 0.250                            | Comp |  10.1  |  Comp |  10.1  |  Comp |  10.1   | 
-| s += A[i] * B[i]                   | 0.125                            | Comp |  10.1  |  Comp |  10.1  |  Comp |  10.1   | 
-| Y[i] = A[i] + C*B[i]               | 0.167                            | Comp |  10.1  |  Comp |  10.1  |  Comp |  10.1   | 
+| Y[j] += Y[j] + A[j][i] * B[i]      | 0.094                            | Mem |  4  | Mem |  3  | Mem |  1.8  |
+| s += A[i] * A[i]                   | 0.250                            | Comp |  10.1  |  Mem |  8  |  Mem |  5   | 
+| s += A[i] * B[i]                   | 0.125                            | Mem |  5  |  Mem |  4  |  Mem |  2.5   | 
+| Y[i] = A[i] + C*B[i]               | 0.167                            | Mem |  7  |  Mem |  5  |  Mem |  3   | 
 
 4. Our matrix multiplication results give a maximum performance of about 0.5 GFLOPs. Given that this kernel has an operational intensity
 of 0.75, our predicted maximum performance is 10.1 GFLOPs/s on Intel 18 and 7.5 to 13.6 GFLOPs, depending on wether we are reading from DRAM
