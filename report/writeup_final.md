@@ -78,7 +78,7 @@ If we add the theoretical peak level for a single core, it would be:
 
 On both architectures (Intel18 & Amd20), the performance(Gflop/s) graph line rises rapidly as the matrix size gets bigger at the beginning (matrix size within 100 or so), after matrix size reaches 100, the trend of performance graph line becomes flatten, and then it goes down in a stepwise manner as the matrix size keeps enlarged.  
 
-The positions where those stepwise decreases taking place may correspond to the memory space needed reaches L1, L2, L3 cache capacity repectively.
+The positions where those stepwise decreases taking place may correspond to the memory space needed reaches L1, L2, L3 cache capacity respectively.
 
 Based on the cache data presented in Q5, we calculate the matrix size corresponding to each cache level. We do calculation by using the  formula,  $\rm Cache \ size(KB) = N^2 \cdot 3 \cdot 8 / 1024$ .  
 
@@ -98,13 +98,11 @@ Based on the cache data presented in Q5, we calculate the matrix size correspond
 | |L3 (16384KB)         |851          |
 | |*L3 (256MB, data from official website)|3308          |
 
-However, on Amd20, there are some discrepancies with the calculated results. While the boundaries of L1 and L2 can be explained by hardware or algorithm strategies, the drop boundary of L3 seems to be much larger than the predicted N value. I don't know the reason for this at the moment, but I noticed that the L3 cache data on the official AMD EPYC 7H12 CPU website (https://www.amd.com/en/products/cpu/amd-epyc-7h12) is slightly larger than the data output by `lscpu`. The official data is 256MB, which might align more closely with the calculated data.
-
+However, on Amd20, there are some discrepancies with the calculated results. While the boundaries of L1 and L2 can be explained by hardware or algorithm strategies, the drop boundary of L3 seems to be much larger than the predicted N value. I don't know the reason for this at the moment, but I noticed that the L3 cache data on the official AMD EPYC 7H12 CPU website (https://www.amd.com/en/products/cpu/amd-epyc-7h12) is slightly larger than the data output by `lscpu`. The official data is 256MB, which might align more closely with the calculated data.  
 
 
 ---
 ## Part 2: The Roofline Model 
-# Part 2:  The Roofline Model
 
 ### Q3 
   <img src="./roofline_amd.jpg" alt="Alt Text" width="900"/>
