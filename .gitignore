@@ -1,0 +1,8 @@
+matmul
+*.o
+*.txt
+*.csv
+*.slurm
+*.out
+*.sb
+.DS_Store

@@ -1,4 +1,5 @@
 #include <sys/time.h>
+#include <stddef.h>
 
 void get_walltime_(double* wcTime) {
   struct timeval tp;
